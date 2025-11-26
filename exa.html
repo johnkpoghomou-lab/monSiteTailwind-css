@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guinée Exam Academy — Cours BAC & BEPC</title>
+  <meta name="description" content="Cours vidéo, exercices et annales corrigées pour les élèves en classes d'examen (BAC / BEPC) en Guinée." />
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a class="flex items-center gap-3" href="#" data-link="home">
+        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">GE</div>
+        <div>
+          <h1 class="text-lg font-bold">Guinée Exam Academy</h1>
+          <p class="text-xs text-gray-500 -mt-1">Cours BAC & BEPC — En ligne</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex gap-4 items-center text-sm">
+        <button class="nav-btn px-3 py-2" data-link="home">Accueil</button>
+        <button class="nav-btn px-3 py-2" data-link="courses">Cours</button>
+        <button class="nav-btn px-3 py-2" data-link="videos">Vidéos</button>
+        <button class="nav-btn px-3 py-2" data-link="annales">Annales</button>
+        <button class="nav-btn px-3 py-2" data-link="resources">Ressources</button>
+        <button class="nav-btn text-white bg-blue-600 px-3 py-2 rounded-lg" data-link="contact">WhatsApp</button>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="menuBtn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+          </svg>
+        </button>
+        <button id="loginBtn" class="text-sm border px-3 py-2 rounded">Connexion</button>
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <button class="nav-btn text-left" data-link="home">Accueil</button>
+        <button class="nav-btn text-left" data-link="courses">Cours</button>
+        <button class="nav-btn text-left" data-link="videos">Vidéos</button>
+        <button class="nav-btn text-left" data-link="annales">Annales</button>
+        <button class="nav-btn text-left" data-link="resources">Ressources</button>
+        <button class="nav-btn text-left" data-link="contact">WhatsApp</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SINGLE PAGE SECTIONS (all in one file) -->
+  <main class="max-w-6xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- HOME / HERO -->
+    <section id="home" class="section">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold">Révise ton BAC ou ton BEPC avec des cours adaptés à la Guinée</h2>
+          <p class="mt-4 text-gray-600">Cours vidéo, fiches, exercices corrigés et annales — tout pour réussir les examens nationaux.</p>
+          <div class="mt-6 flex gap-3">
+            <button class="bg-blue-600 text-white px-5 py-3 rounded-lg" data-link="courses">Voir les cours</button>
+            <button class="px-5 py-3 rounded-lg border" data-link="annales">Annales corrigées</button>
+          </div>
+
+          <div class="mt-6 text-sm text-gray-500">
+            <p>Besoin d'aide ? <a id="waLink" href="#" target="_blank" class="text-green-600 font-medium">Contact WhatsApp</a></p>
+          </div>
+        </div>
+
+        <div>
+          <div class="glass rounded-2xl p-6 shadow-lg">
+            <h3 class="font-bold text-xl">Inscription gratuite</h3>
+            <p class="text-sm text-gray-600 mt-1">Reçois les nouveaux cours et corrigés par WhatsApp.</p>
+            <form id="quickForm" class="mt-4 space-y-3">
+              <input name="name" required class="w-full px-4 py-2 rounded-lg border" placeholder="Nom complet" />
+              <input name="phone" required class="w-full px-4 py-2 rounded-lg border" placeholder="Téléphone (WhatsApp)" />
+              <select name="level" class="w-full px-4 py-2 rounded-lg border">
+                <option value="">Niveau</option>
+                <option value="bac">BAC</option>
+                <option value="bepc">BEPC</option>
+              </select>
+              <div class="flex gap-2">
+                <button type="submit" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg">S'inscrire</button>
+                <button type="button" id="openWhats" class="flex-1 border border-gray-300 px-4 py-2 rounded-lg">WhatsApp</button>
+              </div>
+              <p id="formMsg" class="text-sm text-green-600 hidden">Merci ! Nous vous contacterons bientôt.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="section hidden">
+      <div>
+        <h3 class="text-2xl font-bold">Cours — matières principales</h3>
+        <p class="text-gray-600 mt-2">Choisis ta matière puis la leçon souhaitée.</p>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <!-- sample course card (data-driven below) -->
+          <div class="course-card p-5 bg-white rounded-xl shadow-sm" data-subject="Mathématiques" data-levels="bac,bepc">
+            <h4 class="text-xl font-semibold">Mathématiques</h4>
+            <p class="text-sm text-gray-500 mt-1">Cours, exercices corrigés et vidéos.</p>
+            <div class="mt-3 flex gap-2">
+              <button class="open-course bg-blue-600 text-white px-3 py-2 rounded" data-sub="Mathématiques">Accéder</button>
+              <button class="enroll-btn border px-3 py-2 rounded" data-sub="Mathématiques">S'inscrire</button>
+            </div>
+          </div>
+
+          <div class="course-card p-5 bg-white rounded-xl shadow-sm" data-subject="Physique-Chimie" data-levels="bac,bepc">
+            <h4 class="text-xl font-semibold">Physique-Chimie</h4>
+            <p class="text-sm text-gray-500 mt-1">Formules, TP, et vidéos explicatives.</p>
+            <div class="mt-3 flex gap-2">
+              <button class="open-course bg-blue-600 text-white px-3 py-2 rounded" data-sub="Physique-Chimie">Accéder</button>
+              <button class="enroll-btn border px-3 py-2 rounded" data-sub="Physique-Chimie">S'inscrire</button>
+            </div>
+          </div>
+
+          <div class="course-card p-5 bg-white rounded-xl shadow-sm" data-subject="Histoire-Géo" data-levels="bac,bepc">
+            <h4 class="text-xl font-semibold">Histoire-Géographie</h4>
+            <p class="text-sm text-gray-500 mt-1">Leçons condensées et cartes mentales.</p>
+            <div class="mt-3 flex gap-2">
+              <button class="open-course bg-blue-600 text-white px-3 py-2 rounded" data-sub="Histoire-Géographie">Accéder</button>
+              <button class="enroll-btn border px-3 py-2 rounded" data-sub="Histoire-Géographie">S'inscrire</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" class="section hidden">
+      <h3 class="text-2xl font-bold">Vidéos de cours</h3>
+      <p class="text-gray-600 mt-2">Explications simples et claires.</p>
+
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded shadow-sm">
+          <h4 class="font-semibold">Maths — Suites numériques</h4>
+          <p class="text-sm text-gray-500">Vidéo courte 12 min</p>
+          <a class="text-blue-600 text-sm mt-2 inline-block" href="#" data-video="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Regarder</a>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm">
+          <h4 class="font-semibold">Physique — Électricité</h4>
+          <p class="text-sm text-gray-500">Exemples et exercices</p>
+          <a class="text-blue-600 text-sm mt-2 inline-block" href="#">Regarder</a>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm">
+          <h4 class="font-semibold">Histoire — Indépendances africaines</h4>
+          <p class="text-sm text-gray-500">Résumé & dates clés</p>
+          <a class="text-blue-600 text-sm mt-2 inline-block" href="#">Regarder</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANNALES -->
+    <section id="annales" class="section hidden">
+      <h3 class="text-2xl font-bold">Annales corrigées</h3>
+      <p class="text-gray-600 mt-2">BAC & BEPC — archives récentes (exemples).</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded shadow-sm flex justify-between items-center">
+          <div>
+            <h4 class="font-semibold">BAC — Mathématiques (2024)</h4>
+            <p class="text-sm text-gray-500">Corrigé complet</p>
+          </div>
+          <a class="text-blue-600" href="#" download> Télécharger </a>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm flex justify-between items-center">
+          <div>
+            <h4 class="font-semibold">BEPC — Physique (2023)</h4>
+            <p class="text-sm text-gray-500">Corrigé résumé</p>
+          </div>
+          <a class="text-blue-600" href="#" download> Télécharger </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="section hidden">
+      <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold">Ressources gratuites</h3>
+        <a href="#" class="text-sm text-blue-600">Voir toute la bibliothèque</a>
+      </div>
+
+      <div class="mt-4 grid md:grid-cols-3 gap-6">
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Fiches de révision (PDF)</h4>
+          <p class="text-sm text-gray-500 mt-1">Télécharge des fiches prêtes à imprimer.</p>
+          <div class="mt-3 flex gap-2">
+            <a class="text-sm border px-3 py-2 rounded" href="#" download> Télécharger </a>
+            <a class="text-sm border px-3 py-2 rounded" href="#"> Lire </a>
+          </div>
+        </div>
+
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Exercices corrigés</h4>
+          <p class="text-sm text-gray-500 mt-1">Auto-évaluation avec corrigés.</p>
+        </div>
+
+        <div class="p-4 bg-white rounded-lg shadow-sm">
+          <h4 class="font-semibold">Modèles de CV étudiant</h4>
+          <p class="text-sm text-gray-500 mt-1">Prépare ta candidature pour stage/emploi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section hidden">
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <div>
+          <h3 class="text-2xl font-bold">Contact & WhatsApp</h3>
+          <p class="text-gray-600 mt-2">Tu veux un cours, un corrigé, un examen blanc ? Écris-nous ou contacte via WhatsApp.</p>
+          <ul class="mt-4 text-sm text-gray-700 space-y-2">
+            <li><strong>WhatsApp :</strong> <a id="waPhone" class="text-green-600" href="#">+224 000 00 000</a></li>
+            <li><strong>Email :</strong> <a href="mailto:exam@guineeacademy.com" class="text-blue-600">exam@guineeacademy.com</a></li>
+            <li><strong>Adresse :</strong> Conakry, Guinée</li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="p-4 bg-white rounded-lg shadow-sm">
+          <label class="block text-sm">Nom</label>
+          <input name="name" required class="w-full px-3 py-2 rounded border mt-1" />
+          <label class="block text-sm mt-3">Email ou WhatsApp</label>
+          <input name="contact" required class="w-full px-3 py-2 rounded border mt-1" />
+          <label class="block text-sm mt-3">Message</label>
+          <textarea name="message" rows="4" class="w-full px-3 py-2 rounded border mt-1"></textarea>
+          <div class="mt-4 flex gap-2">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Envoyer</button>
+            <a id="contactWaBtn" class="px-4 py-2 rounded-lg border" href="#" target="_blank">WhatsApp</a>
+          </div>
+          <p id="contactMsg" class="text-sm text-green-600 mt-3 hidden">Message envoyé — merci !</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- STUDENT DASHBOARD (hidden until login) -->
+    <section id="dashboard" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Tableau de bord — Élève</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h3 class="font-bold">Progression</h3>
+          <div class="mt-4 space-y-2 text-sm text-gray-700">
+            <div>Maths : <span id="progMath">0%</span></div>
+            <div>Physique : <span id="progPhys">0%</span></div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h3 class="font-bold">Cours inscrits</h3>
+          <ul id="enrolledList" class="text-blue-600 text-sm mt-2"></ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h3 class="font-bold">Messages</h3>
+          <div id="studentMessages" class="text-sm text-gray-600 mt-2">Pas de nouveaux messages.</div>
+        </div>
+      </div>
+      <div class="mt-6">
+        <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded">Se déconnecter</button>
+      </div>
+    </section>
+
+    <!-- ADMIN (simple simulated back-office) -->
+    <section id="admin" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Administration (Back-office)</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h3 class="font-bold">Ajouter un cours</h3>
+          <form id="addCourseForm" class="mt-4 space-y-3">
+            <input id="courseTitle" class="w-full p-2 border rounded" placeholder="Titre du cours" required />
+            <textarea id="courseDesc" class="w-full p-2 border rounded" placeholder="Description"></textarea>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Ajouter</button>
+          </form>
+          <p id="addCourseMsg" class="text-sm text-green-600 mt-3 hidden">Cours ajouté.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h3 class="font-bold">Envoyer message à tous les élèves</h3>
+          <form id="broadcastForm" class="mt-4 space-y-3">
+            <textarea id="broadcastText" class="w-full p-2 border rounded" placeholder="Message à envoyer"></textarea>
+            <button class="bg-green-600 text-white px-4 py-2 rounded">Envoyer</button>
+          </form>
+          <p id="broadcastMsg" class="text-sm text-green-600 mt-3 hidden">Message envoyé aux élèves (simulation).</p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white p-4 rounded shadow">
+        <h3 class="font-bold">Liste des cours actuels</h3>
+        <ul id="courseList" class="mt-3 space-y-2 text-sm"></ul>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center text-sm text-gray-600 py-8">© <span id="year"></span> Guinée Exam Academy — Fait pour les élèves</footer>
+  </main>
+
+  <!-- LOGIN / MODALS (simple) -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg w-full max-w-md p-6">
+      <h3 id="modalTitle" class="text-xl font-bold">Connexion</h3>
+
+      <form id="loginForm" class="mt-4 space-y-3">
+        <input id="loginName" class="w-full p-2 border rounded" placeholder="Nom ou téléphone" required />
+        <input id="loginPass" type="password" class="w-full p-2 border rounded" placeholder="Mot de passe (admin: 1234)" />
+        <div class="flex gap-2">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded">Se connecter</button>
+          <button type="button" id="closeModal" class="border px-4 py-2 rounded">Annuler</button>
+        </div>
+        <p class="text-sm text-gray-500">Pour tester : entre un nom pour élève; pour admin utiliser login=admin et mot de passe=1234</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ---- CONFIG: change this to your real WA number (no + or with country code)
+    const WA_NUMBER = '224000000000'; // <-- replace with real number, ex: '224612345678'
+
+    // helper: show a section and hide others
+    const sections = document.querySelectorAll('.section');
+    function showSection(id) {
+      sections.forEach(s => s.id === id ? s.classList.remove('hidden') : s.classList.add('hidden'));
+      // close mobile menu if open
+      document.getElementById('mobileMenu').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // initial
+    document.getElementById('year').textContent = new Date().getFullYear();
+    showSection('home');
+
+    // nav buttons
+    document.querySelectorAll('.nav-btn, .nav-btn[data-link], .nav-btn[data-link]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-link') || btn.dataset.link;
+        if (target) showSection(target);
+      });
+    });
+    document.querySelectorAll('[data-link]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const link = el.getAttribute('data-link');
+        if (link) showSection(link);
+      });
+    });
+
+    // menu toggle
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // WA links
+    const waHref = 'https://wa.me/' + WA_NUMBER;
+    document.getElementById('waLink').href = waHref;
+    document.getElementById('contactWaBtn').href = waHref;
+    document.getElementById('waPhone').textContent = '+224 ' + (WA_NUMBER.replace(/^224/, '').replace(/(.{2})/g, '$1 ').trim());
+    document.getElementById('openWhats').addEventListener('click', () => {
+      window.open(waHref + '?text=' + encodeURIComponent('Bonjour, je veux m\'inscrire aux cours.'), '_blank');
+    });
+
+    // quick form (inscription)
+    const quickForm = document.getElementById('quickForm');
+    quickForm.addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('formMsg').classList.remove('hidden');
+      setTimeout(() => document.getElementById('formMsg').classList.add('hidden'), 4000);
+      quickForm.reset();
+      // store to localStorage as a subscriber (simulation)
+      const subs = JSON.parse(localStorage.getItem('subscribers') || '[]');
+      subs.push({ name: e.target.name.value || 'Anonyme', phone: e.target.phone.value || '', level: e.target.level?.value || '' });
+      localStorage.setItem('subscribers', JSON.stringify(subs));
+    });
+
+    // contact form
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('contactMsg').classList.remove('hidden');
+      setTimeout(() => document.getElementById('contactMsg').classList.add('hidden'), 4000);
+      contactForm.reset();
+    });
+
+    // open-course buttons -> show course detail (simple)
+    document.querySelectorAll('.open-course').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subject = btn.dataset.sub;
+        // create a simple modal-like page on the fly (or navigate to a dedicated section)
+        alert('Ouverture du cours: ' + subject + '\\n(En test, tu peux créer une page dédiée pour chaque chapitre.)');
+      });
+    });
+
+    // enroll buttons -> add to student's enrolled list (store locally)
+    document.querySelectorAll('.enroll-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const sub = b.dataset.sub;
+        let enrolled = JSON.parse(localStorage.getItem('enrolled') || '[]');
+        if (!enrolled.includes(sub)) {
+          enrolled.push(sub);
+          localStorage.setItem('enrolled', JSON.stringify(enrolled));
+          alert('Inscription enregistrée: ' + sub);
+        } else {
+          alert('Tu es déjà inscrit(e) à: ' + sub);
+        }
+      });
+    });
+
+    // LOGIN / DASHBOARD simulation
+    const modal = document.getElementById('modal');
+    const loginBtn = document.getElementById('loginBtn');
+    const closeModal = document.getElementById('closeModal');
+    loginBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+    });
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('loginName').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
+      if (name.toLowerCase() === 'admin' && pass === '1234') {
+        // admin -> show admin section
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+        showSection('admin');
+        loadCoursesToAdmin();
+        return;
+      }
+      // else treat as student login
+      localStorage.setItem('currentUser', JSON.stringify({ name }));
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+      populateDashboard();
+      showSection('dashboard');
+    });
+
+    // logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('currentUser');
+      showSection('home');
+    });
+
+    // populate dashboard from localStorage
+    function populateDashboard() {
+      const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+      const enrolled = JSON.parse(localStorage.getItem('enrolled') || '[]');
+      const progMath = Math.min(100, (enrolled.includes('Mathématiques') ? 40 : 0));
+      const progPhys = Math.min(100, (enrolled.includes('Physique-Chimie') ? 20 : 0));
+      document.getElementById('progMath').textContent = progMath + '%';
+      document.getElementById('progPhys').textContent = progPhys + '%';
+      const list = document.getElementById('enrolledList');
+      list.innerHTML = '';
+      if (enrolled.length === 0) list.innerHTML = '<li class="text-gray-600">Aucun cours inscrit</li>';
+      enrolled.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        list.appendChild(li);
+      });
+      const messages = document.getElementById('studentMessages');
+      messages.textContent = 'Bienvenue' + (user.name ? ' ' + user.name : '') + ' — bonne révision !';
+    }
+
+    // ADMIN: add course (simulated)
+    document.getElementById('addCourseForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const title = document.getElementById('courseTitle').value.trim();
+      const desc = document.getElementById('courseDesc').value.trim();
+      if (!title) return;
+      let courses = JSON.parse(localStorage.getItem('customCourses') || '[]');
+      courses.push({ title, desc });
+      localStorage.setItem('customCourses', JSON.stringify(courses));
+      document.getElementById('addCourseMsg').classList.remove('hidden');
+      setTimeout(() => document.getElementById('addCourseMsg').classList.add('hidden'), 3000);
+      document.getElementById('courseTitle').value = '';
+      document.getElementById('courseDesc').value = '';
+      loadCoursesToAdmin();
+      renderCoursesOnFront();
+    });
+
+    // admin broadcast (simulation)
+    document.getElementById('broadcastForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const text = document.getElementById('broadcastText').value.trim();
+      if (!text) return;
+      document.getElementById('broadcastMsg').classList.remove('hidden');
+      setTimeout(() => document.getElementById('broadcastMsg').classList.add('hidden'), 3000);
+      document.getElementById('broadcastText').value = '';
+    });
+
+    // load courses to admin list
+    function loadCoursesToAdmin() {
+      const container = document.getElementById('courseList');
+      container.innerHTML = '';
+      const custom = JSON.parse(localStorage.getItem('customCourses') || '[]');
+      // initial sample courses
+      const base = ['Mathématiques', 'Physique-Chimie', 'Histoire-Géographie'];
+      base.concat(custom.map(c => c.title)).forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        container.appendChild(li);
+      });
+    }
+
+    // render custom courses to front (append to courses section)
+    function renderCoursesOnFront() {
+      const custom = JSON.parse(localStorage.getItem('customCourses') || '[]');
+      const container = document.querySelector('#courses .mt-6');
+      if (!container) return;
+      // remove previous custom nodes
+      document.querySelectorAll('.course-card.custom').forEach(n => n.remove());
+      custom.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'course-card custom p-5 bg-white rounded-xl shadow-sm';
+        card.innerHTML = `<h4 class="text-xl font-semibold">${c.title}</h4>
+                          <p class="text-sm text-gray-500 mt-1">${c.desc || ''}</p>
+                          <div class="mt-3 flex gap-2">
+                            <button class="open-course bg-blue-600 text-white px-3 py-2 rounded" data-sub="${c.title}">Accéder</button>
+                            <button class="enroll-btn border px-3 py-2 rounded" data-sub="${c.title}">S'inscrire</button>
+                          </div>`;
+        container.appendChild(card);
+      });
+      // reattach listeners for new buttons
+      document.querySelectorAll('.open-course').forEach(btn => {
+        btn.onclick = () => alert('Ouverture du cours: ' + btn.dataset.sub);
+      });
+      document.querySelectorAll('.enroll-btn').forEach(btn => {
+        btn.onclick = () => {
+          const sub = btn.dataset.sub;
+          let enrolled = JSON.parse(localStorage.getItem('enrolled') || '[]');
+          if (!enrolled.includes(sub)) {
+            enrolled.push(sub);
+            localStorage.setItem('enrolled', JSON.stringify(enrolled));
+            alert('Inscription: ' + sub);
+          } else alert('Déjà inscrit(e): ' + sub);
+        };
+      });
+    }
+
+    // on load, init
+    (function init() {
+      loadCoursesToAdmin();
+      renderCoursesOnFront();
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      if (currentUser) populateDashboard();
+    })();
+
+    // smooth internal handlers for header buttons that use data-link
+    document.querySelectorAll('button[data-link]').forEach(b => {
+      b.addEventListener('click', () => showSection(b.dataset.link));
+    });
+
+    // allow direct linking via hash (e.g., #courses)
+    if (location.hash) {
+      const hash = location.hash.substring(1);
+      setTimeout(() => { if (document.getElementById(hash)) showSection(hash); }, 100);
+    }
+  </script>
+</body>
+</html>

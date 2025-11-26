@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guinee Skyll -Accademy Formation pour la communauté</title>
+    <meta name="description" content="Formation , ressources et opportunités pour les jeunes de Guinée">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class=" bg-gray-50 text-gray-800 leading-relaxed">
+    <header class="bg-white shadow-sm ticky top-1 z-40">
+        <div class="max-w-6xl flex items-center justify-between px-4 py4">
+            <a class="flex items-center gap-3" href="#">
+                <div class="bg-blue-600 text-white flex items-center justify-center font-medium rounded-full w-10 h-10">GS</div>
+                <div>
+                    <h1 class="text-lg font-extrabold">Guinée Skill Accademy</h1>
+                    <p class="text-xs text -mt-1">Cours en ligne,gratuits pour tout eleves en Classe d'Examen </p>
+                </div>
+            </a>
+
+            <nav class=" hidden md:flex items-center gap-6 text-sm">
+                <a class="hover:text-blue-600" href="#formation">Formations</a>
+                <a class="hover:text-blue-600" href="#ressources">Ressources</a>
+                <a class="hover:text-blue-600" href="#">Opportunités</a>
+                <a class="hover:text-blue-600" href="#">Orientation</a>
+                <a class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" href="#">Contact/ WhatsApp</a>                
+            </nav>
+
+            <div class="md:hidden">
+                <button id=" menuBtn" aria-label="ouvri le menu " class="p-2">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <!--Mobile menu-->
+        <div id=" mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="flex flex-col px-4 py-3 gap-2">
+                <a class="hover:text-blue-600" href="#">Formations</a>
+                <a class="hover:text-blue-600" href="#">Ressources</a>
+                <a class="hover:text-blue-600" href="#">Opportunités</a>
+                <a class="hover:text-blue-600" href="#">Orientation</a>
+                <a class="text-blue-600 py-2 font-medium" href="#">Contact/ WhatsApp</a>              
+            </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!--hero-->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <section id="formation" class="grid md:grid-cols-2 items-center justify-between gap-2">
+            <div>
+                <h2 class="text-4xl font-extrabold text-gray-900 md:text-4xl">Formez, Travaillez. Construisez la Guinée.</h2>
+                <p class="mt-4 text-gray-600">Cours pratiques, ressources gratuites et opportunités (stages, emplois, bourses) pour aider les jeunes de Guinée à se professionnaliser.</p>
+
+                <div class="flex gap-3 mt-6">
+                    <a class="bg-blue-600 text-white px-4 py-4 rounded-lg " href="#formation">Voir les Formations</a>
+                    <a class="bg-gray-100 rounded-lg px-4 py-4 " href="#ressources">Ressources gratuites</a>
+                </div>
+                
+            <p>Besoin d'aide ? <a target="_blank" href="https://wa.me/224626661314" class="text-gray-600 font-medium">Contact/ WhatsApp</a></p>
+                
+            
+                <div class="mt-6">
+                    <h1 class="text-2xl font-bold"> Nos formations populaires</h1>
+                    <p class="text-gray-600 text-sm">Cours ,pratiques adaptes au marche locals.</p>
+                </div>
+
+            </div>
+
+
+            <div>
+                <div class="shadow-lg rounded-2xl p-6">
+                    <h3 class="text-xl font-bold">Inscription rapide</h3>
+                    <p class="text-gray-600 text-sm mt-2">Recevez les prochaines dates de Formation par WhatsApp.</p>
+                   <form id="quickForm" class="mt-4 space-y-3">
+                        <input class="w-full px-3 py-2 rounded-lg border" required type="text" name="nom" placeholder="* votre nom complet*">
+                        <input required class="w-full px-3 py-2 rounded-lg border" type="tel" name="telephone" placeholder="*votre numéro(WhatsApp)*">
+                        
+                        <select name="interest " class="w-full py-2 rounded-lg border">
+                            <option value="">je veux apprendre...</option>
+                            <option value="">Informatique de Base</option>
+                            <option value="">Comptabilite</option>
+                            <option value="">Bureautique</option>
+                            <option value="">Developpement Web/ Application..</option>
+                        </select>
+
+                        <div class="flex gap-2">
+                            <button class="bg-blue-600 px-4 py-2 flex-1 hover:bg-blue-700 rounded-lg text-white" type="submit">envoyer</button>
+                            <button class="bg-gray-200 rounded-lg px-4 py-2 flex-1 border hover:border-gray-300" type="button">WhatsApp</button>
+                        </div>
+                        <p class=" text-sm text-gray-600 hidden">Merci ! Nous vous contacterons bientôt</p>
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </section>
+
+       <section id="formation" class="mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                <article class=" rounded-xl bg-white p-3">
+                    <div class="flex gap-3 mt-3 space-y-2 p-3">
+                        <div class="flex rounded-md w-12 h-12 tems-center justify-center font-bold text-indigo-600 ">IT</div>
+                        <div>
+                            <h4 class="font-semibold">Informatique de Base</h4>
+                            <p class=" text-sm text-gray-600">window,words, excel,initiation internet</p>
+                        </div>
+                    </div>
+                    <ul class="text-sm text-gray-600 p-3 ">
+                        <li>Durée: 2 semaines</li>
+                        <li>Pratique: exercices & certification</li>
+                        <li>Niveau: Debutant</li>
+                    </ul>
+                    <div class="flex gap-3 mt-4 ">
+                        <a class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg " href="#formation">Contact</a>
+                        <a class="border text-gray-500 rounded-lg px-3 py-2  hover:bg-gray-100" href="#">ressources</a>
+                    </div>
+                </article> 
+
+                <article class="rounded-xl bg-white p-3">
+                    <div class="flex gap-3 space-y-2 p-3 ">
+                        <div class=" flex rounded-md items-center text-indigo-600 font-bold justify-center w-12 h-12">WEB</div>
+                        <div>
+                            <h4 class="font-bold">Developpement web</h4>
+                            <p class="text-sm text-gray-600">Initiation au Developpement Web/mobile</p>
+                        </div> 
+                    </div>
+                    <ul class="text-gray-600 text-sm p-3">
+                        <li>Durée : 8 semaines</li>
+                        <li>Projet final : site portfolio</li>
+                        <li>Niveau : Débutant → Intermédiaire</li>
+                    </ul>
+                    <div class="flex gap-3 mt-4 ">
+                        <a class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg " href="#">Contact</a>
+                        <a class="border text-gray-500 rounded-lg px-3 py-2  hover:bg-gray-100" href="#">ressources</a>
+                    </div>
+                    
+                </article>
+
+                <article class="rounded-xl bg-white p-3">
+                    <div class="flex gap-3 space-y-2 p-3">
+                        <div class=" flex rounded-md items-center text-indigo-600 font-bold justify-center w-12 h-12">WEB</div>
+                        <div>
+                            <h4 class="font-bold">Datat Science</h4>
+                            <p class="text-sm text-gray-600">Initiation a la Base de donnee</p>
+                        </div> 
+                    </div>
+                    <ul class="text-gray-600 text-sm p-3">
+                        <li>Durée : 4 semaines</li>
+                        <li>Projet final : SGBD d'une Ecole</li>
+                        <li>Niveau : Débutant → Intermédiaire</li>
+                    </ul>
+                    <div class="flex gap-3 mt-4 ">
+                        <a class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg " href="#">Contact</a>
+                        <a class="border text-gray-500 rounded-lg px-3 py-2  hover:bg-gray-100" href="#">ressources</a>
+                    </div>
+                    
+                </article>
+            </div>
+       </section>
+       <div class="flex  gap-3  justify-between mt-4">
+            <h1 class=" font-bold text-3xl">Ressources gratuites</h1>
+            <a class="text-blue-600" href="#">voir la bibliotheque</a>
+
+        </div>
+
+
+        <section id="ressources" class="mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-6 mt-6">
+                <div class="bg-white rounded-lg space-y-2 p-4">
+                    <h1 class=" font-bold">Guide WOrds & Execel (PDF)</h1>
+                    <P class="text-gray-600 text-sm">Introduction pas a pas</P>
+
+                    <div class="mt-1" >
+                        <a class="bg-gray-100 rounded-lg  px-4 py-2  " href="#">telecharger</a>
+                        <a class="bg-gray-100  rounded-lg px-4 py-2 " href="#">lire en ligne</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg space-y-2 p-4">
+                    <h1 class=" font-bold">Creation de site</h1>
+                    <P class="text-gray-600 text-sm">Creer son site simple</P>
+
+                    <div class="mt-1" >
+                        <a class="bg-gray-100 rounded-lg  px-4 py-2  " href="#">Visioner</a>
+                    </div>
+                </div>
+
+
+                <div class="bg-white rounded-lg space-y-2 p-4">
+                    <h1 class="font-bold">Fiche & CV Lettre </h1>
+                    <p class="text-gray-600 text-sm">Model deja pret a remplir</p>
+                    
+                    <div class="mt-1">
+                        <a class="bg-gray-100 rounded-lg px-4 py-2" href="#">telecharger</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-4 bg-white">
+            <h1 class="font-bold">Orientation & Carrière</h1>
+            <p class="text-gray-600 text-xl">Conseils pour choisir une filière, rédiger un CV et préparer un entretien.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 justify-between items-center gap-6 mt-6">
+                <div class="bg-white rounded-lg shadow-lg px-3 py-3 border">
+                    <h1 class="font-bold">Choisir sa filière</h1>
+                    <P class="text-sm text-gray-600">Quiz rapide pour trouver les métiers adaptés à ton profil.</P>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg px-3 py-3 border">
+                    <h1 class="font-bold">Rediger un bon CV</h1>
+                    <P class="text-gray-600 ">exemple ,mis en page locaux ,mot cles</P>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg px-3 py-3 border">
+                    <h1 class="font-bold">Preparation & entretien</h1>
+                    <p class="text-gray-600">Questions frequentes</p>
+                </div>
+            
+            </div>
+
+        </section>
+
+                    
+
+    </main>
+</body>
+</html>
